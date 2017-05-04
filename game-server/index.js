@@ -24,12 +24,12 @@ io.use(socketIoJwt.authorize({
   handshake: true,
 }));
 
-
 io.on('connection', (socket) => {
   const { id, name } = socket.decoded_token;
   const subscription = store.subscribe(() => {
     socket.emit('update', gameView(store.getState(), id));
   });
+
   store.dispatch({ type: ADD_PLAYER, playerId: id, playerName: name });
   socket.on('tag', ({ targetId }) => {
     store.dispatch({ type: TAG, targetId, taggerId: id });
