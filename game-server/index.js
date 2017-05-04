@@ -29,7 +29,6 @@ io.on('connection', (socket) => {
   const subscription = store.subscribe(() => {
     socket.emit('update', gameView(store.getState(), id));
   });
-
   store.dispatch({ type: ADD_PLAYER, playerId: id, playerName: name });
   socket.on('tag', ({ targetId }) => {
     store.dispatch({ type: TAG, targetId, taggerId: id });

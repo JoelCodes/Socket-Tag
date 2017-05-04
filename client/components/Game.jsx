@@ -32,7 +32,7 @@ class Game extends React.Component {
       (<div>
         <p>You Are It</p>
         <ul>
-          {game.players.map(player => (<li key={player.id}><button onClick={() => this.tag(player.id)} className="button" >{player.name}</button></li>))}
+          {game.players.map(player => (<li key={player.id}><button onClick={() => this.tag(player.id)} className="button" >Tag {player.name}</button></li>))}
         </ul>
       </div>) :
       (<div>
